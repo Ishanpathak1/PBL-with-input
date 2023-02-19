@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Getting data from CSV file</title>
+</head>
+<body>
+    <h1>Click on button to Analyze</h1>
+    <form method="POST">
+        <button type="submit">Analyze Text</button>
+    </form>
+    {% if tokenized_words %}
+    <h2>Tokenized Words</h2>
+    <ul>
+        {% for word in tokenized_words %}
+        <li>{{ word }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Bag of Words</h2>
+    <table>
+        <tr>
+            <th>Word</th>
+            <th>Count</th>
+        </tr>
+        {% for word, count in bag_of_words.items() %}
+        <tr>
+            <td>{{ word }}</td>
+            <td>{{ count }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Term Frequency</h2>
+    <table>
+        <tr>
+            <th>Word</th>
+            <th>Term Frequency</th>
+        </tr>
+        {% for word in term_frequency.keys() %}
+        <tr>
+            <td>{{ word }}</td>
+            <td>{{ "{:.3f}".format(term_frequency[word]) }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Sentence Count</h2>
+    <p>{{ sentence_count }}</p>
+    {% endif %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
